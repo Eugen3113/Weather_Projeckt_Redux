@@ -6,14 +6,14 @@ import { v4 } from "uuid";
 
 export interface WeatherCitySliceState {
   citysweather: CityWeather[];
-  currentObject: any;
+  currentObject: CityWeather
   error: string | undefined;
   isFetching: boolean;
 }
 
 const weatherInitialState: WeatherCitySliceState = {
   citysweather: [],
-  currentObject: undefined,
+  currentObject: {city:"", temp: 0, id: "", icon: ""},
   error: undefined,
   isFetching: false,
 };
@@ -70,9 +70,12 @@ export const weatherSlice = createAppSlice({
         fulfilled: (state: WeatherCitySliceState, action) => {
           // Пишем логику, когда пришел положительные ответ от сервера и мы кладем пришедшие данные в наш массив в виде обьекта
           console.log("Fulfilled");
-          state.currentObject = {city: action.payload.data.name, 
-              icon: action.payload.data.weather[0].icon,
-              temp: action.payload.data.main.temp,id: v4() };
+          state.currentObject = {
+            city: action.payload.data.name,
+            icon: `http://openweathermap.org/img/w/${action.payload.data.weather[0].icon}.png`,
+            temp: action.payload.data.main.temp,
+            id: v4(),
+          };
           console.log(state.currentObject);
           state.isFetching = false;
         },
@@ -97,6 +100,9 @@ export const weatherSlice = createAppSlice({
 
   selectors: {
     citysweather: (state) => state.citysweather,
+    currentObject: (state) => state.currentObject,
+    error: (state) => state.error,
+    isFetching: (state) => state.isFetching,
   },
 });
 

@@ -10,11 +10,22 @@ import {
   CreateWeatherContainer,
   CreateWeatherWrapper,
   InputsContainer,
+  CardContainer,
+  CityContainer,
+  TempCityContainer,
+  TempContainer,
+  ButtonsContainer,
+  RightColumn,
+  LeftColumn,
+  IconContainer,
 } from "./styles";
 
 import { WEATHER_FORM_VALUES } from "./types";
-import { useAppDispatch } from "store/hooks";
-import { weatherActions, weatherSelectors } from "store/redux/weather/weatherSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import {
+  weatherActions,
+  weatherSelectors,
+} from "store/redux/weather/weatherSlice";
 import { CityWeather } from "store/redux/weather/types";
 
 function CreateWeather() {
@@ -47,13 +58,36 @@ function CreateWeather() {
       dispatch(weatherActions.searchCity(values.city.trim()));
       //условный рендеринг по текущему объекту. Если в нем ошибка - карточка с ошибкой
       //если нормальные данные , карточка с погодой и двумя Button'ами "сохранить" и "удалить"
-      
-
-      
       //dispatch(weatherActions.addCity(newCity));
       const newCityWeater = navigate("/");
     },
   });
+
+  const showCityCard = () => {
+    return (
+      <CardContainer>
+        <TempCityContainer>
+          <LeftColumn>
+            <TempContainer>
+              {`${useAppSelector(weatherSelectors.currentObject).temp}°`}
+            </TempContainer>
+            <CityContainer>
+              {useAppSelector(weatherSelectors.currentObject).city}
+            </CityContainer>
+          </LeftColumn>
+          <RightColumn>
+            <IconContainer src={useAppSelector(weatherSelectors.currentObject).icon}></IconContainer>
+            <IconContainer src={useAppSelector(weatherSelectors.currentObject).icon}></IconContainer>
+            <IconContainer src={useAppSelector(weatherSelectors.currentObject).icon}></IconContainer>
+          </RightColumn>
+        </TempCityContainer>
+        <ButtonsContainer>
+          <Button name = "Save"/> 
+          <Button name = "Delete" />
+        </ButtonsContainer>
+      </CardContainer>
+    );
+  };
 
   return (
     <CreateWeatherWrapper>
@@ -69,6 +103,7 @@ function CreateWeather() {
             onChange={formik.handleChange}
             error={formik.errors[WEATHER_FORM_VALUES.CITY]}
           />
+
           {/* <Input
             id="temp-id"
             name={WEATHER_FORM_VALUES.TEMP}
@@ -92,6 +127,8 @@ function CreateWeather() {
         </InputsContainer>
         <Button name="Search" type="submit" />
       </CreateWeatherContainer>
+
+      {showCityCard()}
     </CreateWeatherWrapper>
   );
 }
