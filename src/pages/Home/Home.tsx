@@ -6,8 +6,7 @@ import Button from "components/Button/Button";
 import Input from "components/Input/input";
 import { v4 as uuidv4 } from "uuid";
 
-import {
-  CreateWeatherContainer,
+import {  CreateWeatherContainer,
   CreateWeatherWrapper,
   InputsContainer,
   CardContainer,
@@ -37,32 +36,22 @@ function CreateWeather() {
       .min(2, "Name must be at least 2 characters")
       .max(50, "Name must be no more than 50 characters")
       .required("Name is required"),
-    // [WEATHER_FORM_VALUES.TEMP]: Yup.number()
-    //   .min(2, "Surname must be at least 2 characters")
-    //   .max(15, "Surname must be no more than 15 characters")
-    //   .required("Surname is required"),
-    // [WEATHER_FORM_VALUES.ICON]: Yup.string()
-    //   .min(1, "Age must be at least 1 character")
-    //   .max(3, "Age must be no more than 3 character")
-    //   .required("Age is required"),
   });
 
   const formik = useFormik({
     initialValues: {
       [WEATHER_FORM_VALUES.CITY]: "",
-      // [WEATHER_FORM_VALUES.TEMP]: 0,
-      // [WEATHER_FORM_VALUES.ICON]: "",
     },
     validationSchema,
     onSubmit: (values) => {
       dispatch(weatherActions.searchCity(values.city.trim()));
-      //условный рендеринг по текущему объекту. Если в нем ошибка - карточка с ошибкой
-      //если нормальные данные , карточка с погодой и двумя Button'ами "сохранить" и "удалить"
-      //dispatch(weatherActions.addCity(newCity));
-      const newCityWeater = navigate("/");
+      //const newCityWeater = navigate("/");
     },
   });
 
+  const onSave = () => {
+    dispatch(weatherActions.addCity())
+  }
   const showCityCard = () => {
     return (
       <CardContainer>
@@ -82,7 +71,7 @@ function CreateWeather() {
           </RightColumn>
         </TempCityContainer>
         <ButtonsContainer>
-          <Button name = "Save"/> 
+          <Button name = "Save" onClick={onSave}/> 
           <Button name = "Delete" />
         </ButtonsContainer>
       </CardContainer>
