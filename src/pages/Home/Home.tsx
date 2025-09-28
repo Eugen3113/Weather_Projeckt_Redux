@@ -52,22 +52,21 @@ function CreateWeather() {
   const onSave = () => {
     dispatch(weatherActions.addCity())
   }
+  const currentObject = useAppSelector(weatherSelectors.currentObject);
   const showCityCard = () => {
     return (
       <CardContainer>
         <TempCityContainer>
           <LeftColumn>
             <TempContainer>
-              {`${useAppSelector(weatherSelectors.currentObject).temp}°`}
+              {`${currentObject.temp}°`}
             </TempContainer>
-            <CityContainer>
-              {useAppSelector(weatherSelectors.currentObject).city}
-            </CityContainer>
+            <CityContainer>{currentObject.city}</CityContainer>
           </LeftColumn>
           <RightColumn>
-            <IconContainer src={useAppSelector(weatherSelectors.currentObject).icon}></IconContainer>
-            <IconContainer src={useAppSelector(weatherSelectors.currentObject).icon}></IconContainer>
-            <IconContainer src={useAppSelector(weatherSelectors.currentObject).icon}></IconContainer>
+            <IconContainer src={currentObject.icon}></IconContainer>
+            <IconContainer src={currentObject.icon}></IconContainer>
+            <IconContainer src={currentObject.icon}></IconContainer>
           </RightColumn>
         </TempCityContainer>
         <ButtonsContainer>
@@ -77,7 +76,7 @@ function CreateWeather() {
       </CardContainer>
     );
   };
-
+  
   return (
     <CreateWeatherWrapper>
       <CreateWeatherContainer onSubmit={formik.handleSubmit}>
@@ -92,29 +91,8 @@ function CreateWeather() {
             onChange={formik.handleChange}
             error={formik.errors[WEATHER_FORM_VALUES.CITY]}
           />
-
-          {/* <Input
-            id="temp-id"
-            name={WEATHER_FORM_VALUES.TEMP}
-            type="number"
-            placeholder=""
-            label="temp"
-            value={formik.values[WEATHER_FORM_VALUES.TEMP]}
-            onChange={formik.handleChange}
-            error={formik.errors[WEATHER_FORM_VALUES.TEMP]}
-          />
-          <Input
-            id="icon-id"
-            name={WEATHER_FORM_VALUES.ICON}
-            type="text"
-            placeholder=""
-            label="icon"
-            value={formik.values[WEATHER_FORM_VALUES.ICON]}
-            onChange={formik.handleChange}
-            error={formik.errors[WEATHER_FORM_VALUES.ICON]}
-          /> */}
-        </InputsContainer>
         <Button name="Search" type="submit" />
+         </InputsContainer>
       </CreateWeatherContainer>
 
       {showCityCard()}
