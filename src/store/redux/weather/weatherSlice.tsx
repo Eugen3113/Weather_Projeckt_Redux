@@ -1,20 +1,31 @@
 import { createAppSlice } from "store/createAppSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { CityWeather } from "./types";
+import { CityWeather, ErrorObject } from "./types";
 import axios from "axios";
 import { v4 } from "uuid";
+import { error } from "console";
 
 export interface WeatherCitySliceState {
   citysweather: CityWeather[];
   currentObject: CityWeather;
-  error: string | undefined;
+  error: ErrorObject;
   isFetching: boolean;
 }
+const errorObjectInitialState: ErrorObject = {
+  cod: "",
+  message: "",
+};
 
+const currentObjectInitialState: CityWeather = {
+  city: "",
+  temp: 0,
+  id: "",
+  icon: "",
+};
 const weatherInitialState: WeatherCitySliceState = {
   citysweather: [],
-  currentObject: { city: "", temp: 0, id: "", icon: "" },
-  error: undefined,
+  currentObject: currentObjectInitialState,
+  error: errorObjectInitialState,
   isFetching: false,
 };
 
@@ -26,6 +37,9 @@ export const weatherSlice = createAppSlice({
     addCity: create.reducer((state: WeatherCitySliceState) => {
       state.citysweather.push(state.currentObject);
       console.log(state.citysweather);
+    }),
+    deleteCurrentCity: create.reducer((state: WeatherCitySliceState) => {
+      state.currentObject = currentObjectInitialState;
     }),
     deleteCity: create.reducer(
       (state: WeatherCitySliceState, action: PayloadAction<string>) => {
@@ -50,7 +64,7 @@ export const weatherSlice = createAppSlice({
       {
         pending: (state: WeatherCitySliceState) => {
           console.log("Pending");
-          state.error = undefined;
+          state.error = errorObjectInitialState;
           state.isFetching = true;
         },
         fulfilled: (state: WeatherCitySliceState, action) => {
@@ -65,15 +79,18 @@ export const weatherSlice = createAppSlice({
           state.isFetching = false;
         },
         rejected: (state: WeatherCitySliceState, action) => {
+          console.log("REJECTED");
           // Пишем логику, когда нам пришла ошибка
-          console.log("Rejected");
           state.isFetching = false;
-
+          state.currentObject = currentObjectInitialState;
           if (action.error.code === "ERR_BAD_REQUEST") {
-            state.error = "Too Many Requests";
+            state.error = {message : "Too Many Requests", cod :"404"} ;
           } else {
-            state.error = "Some Network Error";
-          }
+                  
+          state.error = {
+            cod: "302",
+             message: "erunda",
+          };}
         },
       }
     ),

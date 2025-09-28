@@ -18,15 +18,6 @@ export const CardContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-export const TempCityContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 19px;
-  height: 97px;
-  width: 100%;
-`;
-
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -34,34 +25,30 @@ export const ButtonsContainer = styled.div`
   gap: 95px;
 `;
 
-export const LeftColumn = styled.div`
-  display: flex;
+export const Info = styled.div`
+ display: none;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  max-width: 250px;
-  min-width: fit-content;
-`;
-
-export const RightColumn = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-`;
+  gap: 6px;
+  height: 129px;
+  width: 100%;
+  max-width: 709px;
+  min-width: fit-content;
+  padding: 16px;
+`; 
 
-export const TempContainer = styled.div`
+
+export const ErrorCode = styled.div`
+
   font-size: 57px;
   font-weight: 500;
-  color: white;
+  color: rgba(243, 94, 94, 1);
 `;
 
-export const CityContainer = styled.div`
+export const ErrorMessage = styled.div`
   font-size: 18px;
   font-weight: 400;
   color: white;
 `;
 
-export const IconContainer = styled.img`
-  height: 100%;
-`;

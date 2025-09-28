@@ -1,6 +1,11 @@
 export interface CityWeather {
-  id: string
-  city: string
-  temp: number
-  icon: string
-};
+  id: string;
+  city: string;
+  temp: number;
+  icon: string;
+}
+
+export interface ErrorObject {
+  cod: string;
+  message: string;
+}

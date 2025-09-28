@@ -30,3 +30,20 @@ export const InputsContainer = styled.div`
   flex-direction: row;
   gap: 20px;
 `;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  max-width: 709px;
+  min-width: fit-content;
+  padding: 16px;
+`;
+
+export const LoadingMessage = styled.div`
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+`;

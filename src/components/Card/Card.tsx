@@ -16,12 +16,13 @@ import {
   IconContainer,
 } from "./styles";
 
-function Card({currentObject} : CardProps) {
+function Card({currentObject, isSave = false , onDel} : CardProps) {
   const dispatch = useAppDispatch();
 
   const onSave = () => {
     dispatch(weatherActions.addCity());
   };
+ 
   return (
     <CardContainer>
       <TempCityContainer>
@@ -36,8 +37,8 @@ function Card({currentObject} : CardProps) {
         </RightColumn>
       </TempCityContainer>
       <ButtonsContainer>
-        <Button name="Save" onClick={onSave} />
-        <Button name="Delete" />
+        {isSave && <Button name="Save" onClick={onSave} />}
+        <Button name="Delete" onClick={onDel} />
       </ButtonsContainer>
     </CardContainer>
   );

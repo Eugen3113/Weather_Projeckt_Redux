@@ -4,6 +4,7 @@ import {
   weatherActions,
   weatherSelectors,
 } from "store/redux/weather/weatherSlice";
+import Card from "components/Card/Card";
 
 import { ButtonControl, Cards, WeatherWrapper } from "./styles";
 
@@ -18,24 +19,26 @@ function Weathers() {
   const deleteAllCards = () => {
     dispatch(weatherActions.deleteAllCitys());
   };
+  const weathers = useAppSelector(weatherSelectors.citysweather);
 
   return (
+  
     <WeatherWrapper>
-      {/* <Cards>
+       <Cards>
         {weathers.map(weather => (
           <Card
             key={weather.id}
-            userData={weather}
-            onDelete={() => deleteWeather(weather.id)}
+            currentObject={weather}
+            onDel={() => deleteWeather(weather.id)}
           />
         ))}
-      </Cards> */}
-      {/* 
+      </Cards> 
+       
       {!!weathers.length && (
         <ButtonControl>
           <Button name="Remove All Weathers" isRed onClick={deleteAllCards} />
         </ButtonControl>
-      )} */}
+      )} 
     </WeatherWrapper>
   );
 }

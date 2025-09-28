@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import Button from "components/Button/Button";
 import Input from "components/Input/input";
 import Card from "components/Card/Card";
-import { v4 as uuidv4 } from "uuid";
 
-import {  CreateWeatherContainer,
+import {
+  CreateWeatherContainer,
   CreateWeatherWrapper,
   InputsContainer,
+  LoadingContainer,
+  LoadingMessage,
 } from "./styles";
 
 import { WEATHER_FORM_VALUES } from "./types";
@@ -18,7 +20,7 @@ import {
   weatherActions,
   weatherSelectors,
 } from "store/redux/weather/weatherSlice";
-import { CityWeather } from "store/redux/weather/types";
+import ErrorCard from "components/ErrorCard/ErrorCard";
 
 function CreateWeather() {
   const dispatch = useAppDispatch();
@@ -36,15 +38,19 @@ function CreateWeather() {
       [WEATHER_FORM_VALUES.CITY]: "",
     },
     validationSchema,
-    onSubmit: (values) => {      
+    onSubmit: (values) => {
       dispatch(weatherActions.searchCity(values.city.trim()));
-     },
+    },
   });
+  const onDelete = () => {
+    dispatch(weatherActions.deleteCurrentCity());
+  };
 
- 
   const currentObject = useAppSelector(weatherSelectors.currentObject);
-  
-   return (
+  const errorObject = useAppSelector(weatherSelectors.error);
+  const isFetching = useAppSelector(weatherSelectors.isFetching);
+
+  return (
     <CreateWeatherWrapper>
       <CreateWeatherContainer onSubmit={formik.handleSubmit}>
         <InputsContainer>
@@ -61,7 +67,16 @@ function CreateWeather() {
         </InputsContainer>
         <Button name="Search" type="submit" />
       </CreateWeatherContainer>
-        {!!currentObject.city && <Card currentObject={currentObject} />}
+      {!!currentObject.city && (
+        <Card currentObject={currentObject} isSave onDel={onDelete} />
+      )}
+      {!!isFetching && (
+        <LoadingContainer>
+          <LoadingMessage>{"LOADING ... "}</LoadingMessage>{" "}
+        </LoadingContainer>
+      )}
+
+      {!!errorObject.cod && <ErrorCard errObject={errorObject} />}
     </CreateWeatherWrapper>
   );
 }
