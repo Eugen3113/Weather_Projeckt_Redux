@@ -4,19 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "components/Button/Button";
 import Input from "components/Input/input";
+import Card from "components/Card/Card";
 import { v4 as uuidv4 } from "uuid";
 
 import {  CreateWeatherContainer,
   CreateWeatherWrapper,
   InputsContainer,
-  CardContainer,
-  CityContainer,
-  TempCityContainer,
-  TempContainer,
-  ButtonsContainer,
-  RightColumn,
-  LeftColumn,
-  IconContainer,
 } from "./styles";
 
 import { WEATHER_FORM_VALUES } from "./types";
@@ -48,39 +41,10 @@ function CreateWeather() {
      },
   });
 
-  const onSave = () => {
-    dispatch(weatherActions.addCity())
-  }
-
+ 
   const currentObject = useAppSelector(weatherSelectors.currentObject);
   
-  const showCityCard = () => {
-    return (
-      <CardContainer>
-        <TempCityContainer>
-          <LeftColumn>
-            <TempContainer>
-              {`${currentObject.temp}°`}
-            </TempContainer>
-            <CityContainer>
-              {currentObject.city}
-            </CityContainer>
-          </LeftColumn>
-          <RightColumn>
-            <IconContainer src={currentObject.icon}></IconContainer>
-            <IconContainer src={currentObject.icon}></IconContainer>
-            <IconContainer src={currentObject.icon}></IconContainer>
-          </RightColumn>
-        </TempCityContainer>
-        <ButtonsContainer>
-          <Button name = "Save" onClick={onSave}/> 
-          <Button name = "Delete" />
-        </ButtonsContainer>
-      </CardContainer>
-    );
-  };
-
-  return (
+   return (
     <CreateWeatherWrapper>
       <CreateWeatherContainer onSubmit={formik.handleSubmit}>
         <InputsContainer>
@@ -97,7 +61,7 @@ function CreateWeather() {
         </InputsContainer>
         <Button name="Search" type="submit" />
       </CreateWeatherContainer>
-        {!!currentObject.city && showCityCard()}
+        {!!currentObject.city && <Card currentObject={currentObject} />}
     </CreateWeatherWrapper>
   );
 }
