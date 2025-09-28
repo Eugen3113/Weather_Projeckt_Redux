@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 
 export const CreateWeatherWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
   color: black;
+  gap: 100px;
 `;
 
 export const CreateWeatherContainer = styled.form`
@@ -25,6 +27,6 @@ export const Title = styled.p`
 
 export const InputsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 30px;
+  flex-direction: row;
+  gap: 20px;
 `;
