@@ -38,8 +38,8 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   outline: none;
   border: none;
   padding: 0;
-  height: 50px;
-  width: 200px;
+  height: 48px;
+  width: 148px;
   border-radius: 50px;
   background-color: ${({ $isRed, disabled }) =>
     generateButtonColor($isRed, disabled)};

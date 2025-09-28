@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 
 export const CreateWeatherWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
   color: black;
+  gap: 100px;
 `;
 
 export const CreateWeatherContainer = styled.form`
@@ -25,14 +27,14 @@ export const Title = styled.p`
 
 export const InputsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 30px;
+  flex-direction: row;
+  gap: 20px;
 `;
 
 export const CardContainer = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  margin-top: 200px;
   align-items: center;
   width: 709px;
   height: 220px;
@@ -82,13 +84,13 @@ export const RightColumn = styled.div`
 
 export const TempContainer = styled.div`
   font-size: 57px;
-  font-weight: 500;
+  font-weight: 500px;
   color: white;
 `;
 
 export const CityContainer = styled.div`
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 400px;
   color: white;
 `;
 
