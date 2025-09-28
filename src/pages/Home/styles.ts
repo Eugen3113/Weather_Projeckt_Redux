@@ -2,9 +2,12 @@ import styled from "@emotion/styled";
 
 export const CreateWeatherWrapper = styled.div`
   display: flex;
+  flex-direction: column;                       //1
+  align-items: center;                          //2
   justify-content: center;
   flex: 1;
   color: black;
+  margin-top: -120px                             //?
 `;
 
 export const CreateWeatherContainer = styled.form`
@@ -13,7 +16,6 @@ export const CreateWeatherContainer = styled.form`
   width: 710px;
   min-height: 48px;
   max-height: fit-content;
-  background-color: transparent;
   gap: 30px;
 `;
 
@@ -32,7 +34,7 @@ export const InputsContainer = styled.div`
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 200px;
+  margin-top: 120px;                                 //3   //?
   align-items: center;
   width: 709px;
   height: 220px;
@@ -45,7 +47,7 @@ export const CardContainer = styled.div`
     rgba(47, 72, 111, 0.62) 5.78%,
     rgba(11, 27, 52, 0.62) 96.58%
   );
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
 `;
 
 export const TempCityContainer = styled.div`

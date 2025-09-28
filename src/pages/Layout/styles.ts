@@ -30,7 +30,8 @@ export const Logo = styled.div`
   width: fit-content;
   cursor: pointer;
   font-weight: bold;
-  font-size: 34px;
+  font-size: 29px;                                       // 29
+  margin-left: 85px;                                     //  85
 `
 
 export const NavigationContainer = styled.nav`
@@ -38,16 +39,19 @@ export const NavigationContainer = styled.nav`
   gap: 45px;
   height: 100%;
   align-items: center;
+  margin-right: 85px                                       //85
 `
 export const HeaderLink = styled(NavLink)`
-  font-size: 28px;
+  font-size: 24px;                                            // 24px
+  color: white;                                               // white
   font-weight: normal;
 `
 
 export const Main = styled.main`
   display: flex;
  flex: 1;
- margin-top: 120px;
+ position: relative;
+ /* margin-top: 120px; */
 `
 
 export const navlinkProps = (isActive: boolean) => ({
