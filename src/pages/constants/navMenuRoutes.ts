@@ -5,12 +5,12 @@ export interface ROUTES_DATA {
 }
 
 export const ROUTES: ROUTES_DATA = {
-  HOME: "/",
+  HOME: "/home",
   WEATHERS: "/weathers",
   NOT_FOUND: "*",
 }
 
 export enum NAV_MENU_ROUTES {
-  Home = "/",
+  Home = "/home",
   Weathers = "/weathers",
 }

@@ -36,7 +36,7 @@ function Weathers() {
        
       {!!weathers.length && (
         <ButtonControl>
-          <Button name="Remove All Weathers" isRed onClick={deleteAllCards} />
+          <Button name="Delete all cards" variant = "delete" onClick={deleteAllCards} />
         </ButtonControl>
       )} 
     </WeatherWrapper>

@@ -6,13 +6,13 @@ function Button({
   name,
   onClick = () => {},
   children,
-  isRed = false,
+  variant = "save",
   disabled = false,
 }: ButtonProps) {
   return (
     <ButtonComponent
       disabled={disabled}
-      $isRed={isRed}
+      $variant={variant}
       onClick={onClick}
       type={type}
     >

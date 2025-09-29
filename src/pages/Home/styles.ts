@@ -22,7 +22,7 @@ export const CreateWeatherContainer = styled.form`
 export const Title = styled.p`
   font-size: 24px;
   font-weight: bold;
-  color: rgba(255, 0, 0, 1);
+  color: #ff0000ff;
 `;
 
 export const InputsContainer = styled.div`
