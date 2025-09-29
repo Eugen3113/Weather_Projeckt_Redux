@@ -2,7 +2,8 @@ import { Global, css } from "@emotion/react";
 const globalAppStyles = css`
   * {
     box-sizing: border-box;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:
+      "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   }
   html,
   body {

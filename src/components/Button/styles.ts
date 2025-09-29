@@ -22,7 +22,9 @@ const generateButtonColorOnHover = (variant: string, disabled?: boolean) => {
     case "search":
       return "#7a99b6ff";
     case "delete":
-      return "#b50000";
+      return "#86393971";
+    case "save":
+      return "#05720c4a";
     default:
       return "#ffffff26";
   }

@@ -4,17 +4,13 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   width: 709px;
   height: 220px;
   padding: 27px 36px;
-  border-radius: 15px;
-  /* background-color: rgba(18, 45, 77, 0.5); */
+  border-radius: 25px;
   gap: 30px;
-  background: linear-gradient(
-    133.66deg,
-    rgba(47, 72, 111, 0.62) 5.78%,
-    rgba(11, 27, 52, 0.62) 96.58%
-  );
+  background: linear-gradient(133.66deg, #2f486f9e 5.78%, #0b1b349e 96.58%);
   backdrop-filter: blur(8px);
 `;
 
@@ -23,10 +19,12 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 95px;
+  position: relative;
+  z-index: 2;
 `;
 
 export const Info = styled.div`
- display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -35,12 +33,9 @@ export const Info = styled.div`
   width: 100%;
   max-width: 709px;
   min-width: fit-content;
-  padding: 16px;
-`; 
-
+`;
 
 export const ErrorCode = styled.div`
-
   font-size: 57px;
   font-weight: 500;
   color: rgba(243, 94, 94, 1);
@@ -51,4 +46,3 @@ export const ErrorMessage = styled.div`
   font-weight: 400;
   color: white;
 `;
-

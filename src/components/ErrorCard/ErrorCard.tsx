@@ -1,42 +1,32 @@
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import {
-  weatherActions,
-  weatherSelectors,
-} from "store/redux/weather/weatherSlice";
-
 import Button from "components/Button/Button";
 import {
   CardContainer,
   Info,
   ErrorCode,
   ErrorMessage,
-  ButtonsContainer
+  ButtonsContainer,
 } from "./styles";
 
-import { ErrorObject } from "store/redux/weather/types";
 import { ErrorCardProps } from "./types";
-
+import { useAppDispatch } from "store/hooks";
+import { weatherActions } from "store/redux/weather/weatherSlice";
 
 function ErrorCard({ errObject }: ErrorCardProps) {
-
+  const dispatch = useAppDispatch();
   const onDel = () => {
-    alert("OnDEL");
+    dispatch(weatherActions.deleteErrorCard());
+    alert("Deleted successfully");
   };
 
   return (
     <CardContainer>
       <Info>
-        <ErrorCode>
-          {errObject.cod}  
-        </ErrorCode>
-      <ErrorMessage>
-        {errObject.message}
-      </ErrorMessage>
-    
+        <ErrorCode>{errObject.cod}</ErrorCode>
+        <ErrorMessage>{errObject.message}</ErrorMessage>
       </Info>
-        <ButtonsContainer>
-         <Button name="Delete" onClick={onDel} />
-      </ButtonsContainer> 
+      <ButtonsContainer>
+        <Button name="Delete" variant="delete" onClick={onDel} />
+      </ButtonsContainer>
     </CardContainer>
   );
 }

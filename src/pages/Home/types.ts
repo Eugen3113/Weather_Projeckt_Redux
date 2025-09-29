@@ -5,7 +5,7 @@ export enum WEATHER_FORM_VALUES {
 }
 
 export interface WeatherData {
-  city: string
-  temp: number
-  icon: string
+  city: string;
+  temp: number;
+  icon: string;
 }
