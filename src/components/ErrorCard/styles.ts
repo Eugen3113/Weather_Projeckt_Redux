@@ -26,7 +26,7 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Info = styled.div`
- display: none;
+ display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
