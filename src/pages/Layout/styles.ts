@@ -50,6 +50,7 @@ export const Main = styled.main`
   align-items: center;
   flex: 1;
   margin-top: 100px;
+  margin-bottom: 100px;
 `;
 
 export const navlinkProps = (isActive: boolean) => ({

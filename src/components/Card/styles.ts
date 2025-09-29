@@ -32,6 +32,8 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 95px;
+  position: relative;
+  z-index: 2;           
 `;
 
 export const LeftColumn = styled.div`
