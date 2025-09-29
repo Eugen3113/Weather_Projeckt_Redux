@@ -27,7 +27,6 @@ export const Logo = styled.div`
   align-items: center;
   height: 100%;
   width: fit-content;
-  cursor: pointer;
   font-size: 24px;
 `;
 

@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
 
 import Button from "components/Button/Button";
 import Input from "components/Input/input";
@@ -24,7 +23,6 @@ import ErrorCard from "components/ErrorCard/ErrorCard";
 
 function CreateWeather() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     [WEATHER_FORM_VALUES.CITY]: Yup.string()
