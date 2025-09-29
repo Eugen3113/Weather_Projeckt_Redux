@@ -1,5 +1,5 @@
-import { ButtonComponent } from "./styles"
-import { type ButtonProps } from "./types"
+import { ButtonComponent } from "./styles";
+import { type ButtonProps } from "./types";
 
 function Button({
   type = "button",
@@ -16,11 +16,10 @@ function Button({
       onClick={onClick}
       type={type}
     >
-      {/* Улосвный рендеринг */}
       {!children && name}
       {children}
     </ButtonComponent>
-  )
+  );
 }
 
-export default Button
+export default Button;

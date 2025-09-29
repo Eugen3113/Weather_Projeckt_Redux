@@ -25,10 +25,10 @@ function CreateWeather() {
   const dispatch = useAppDispatch();
 
   const validationSchema = Yup.object().shape({
-    [WEATHER_FORM_VALUES.CITY]: Yup.string()
-      .min(2, "Name must be at least 2 characters")
-      .max(50, "Name must be no more than 50 characters")
-      .required("Name is required"),
+    [WEATHER_FORM_VALUES.CITY]: Yup.string(),
+    // .min(2, "Name must be at least 2 characters")
+    // .max(50, "Name must be no more than 50 characters")
+    // .required("Name is required"),
   });
 
   const formik = useFormik({
@@ -37,11 +37,17 @@ function CreateWeather() {
     },
     validationSchema,
     onSubmit: (values) => {
-      dispatch(weatherActions.searchCity(values.city.trim()));
+      if (values.city.trim().length === 0) {
+        alert("Waiting name of city");
+      } else {
+        dispatch(weatherActions.searchCity(values.city.trim()));
+        formik.resetForm();
+      }
     },
   });
   const onDelete = () => {
     dispatch(weatherActions.deleteCurrentCity());
+    alert("Deleted successfully");
   };
 
   const currentObject = useAppSelector(weatherSelectors.currentObject);
@@ -63,7 +69,12 @@ function CreateWeather() {
             error={formik.errors[WEATHER_FORM_VALUES.CITY]}
           />
         </InputsContainer>
-        <Button name="Search" type="submit" variant="search"/>
+        <Button
+          name="Search"
+          type="submit"
+          variant="search"
+          disabled={isFetching}
+        />
       </CreateWeatherContainer>
       {!!currentObject.city && (
         <Card currentObject={currentObject} isSave onDel={onDelete} />

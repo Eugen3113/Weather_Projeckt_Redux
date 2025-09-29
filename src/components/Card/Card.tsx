@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from "store/hooks";
+import { useAppDispatch } from "store/hooks";
 import {
   weatherActions,
-  weatherSelectors,
+ 
 } from "store/redux/weather/weatherSlice";
 import type { CardProps } from "./types"; 
 import Button from "components/Button/Button";
@@ -21,6 +21,7 @@ function Card({currentObject, isSave = false , onDel} : CardProps) {
 
   const onSave = () => {
     dispatch(weatherActions.addCity());
+    alert("Saved successfully");
   };
  
   return (

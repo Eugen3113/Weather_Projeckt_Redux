@@ -10,11 +10,7 @@ export const CardContainer = styled.div`
   padding: 27px 36px;
   border-radius: 25px;
   gap: 30px;
-  background: linear-gradient(
-    133.66deg,
-    #2f486f9e 5.78%,
-    #0b1b349e 96.58%
-  );
+  background: linear-gradient(133.66deg, #2f486f9e 5.78%, #0b1b349e 96.58%);
   backdrop-filter: blur(8px);
 `;
 
@@ -33,7 +29,7 @@ export const ButtonsContainer = styled.div`
   align-items: center;
   gap: 95px;
   position: relative;
-  z-index: 2;           
+  z-index: 2;
 `;
 
 export const LeftColumn = styled.div`

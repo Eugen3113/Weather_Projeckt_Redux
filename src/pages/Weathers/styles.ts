@@ -24,7 +24,5 @@ export const ButtonControl = styled.div`
   width: 100%;
   & > button {
     width: 700px;
-    background-color: #3678b4;
-    border: 1px solid #3678b4;
   }
 `;
