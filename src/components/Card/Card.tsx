@@ -37,8 +37,8 @@ function Card({currentObject, isSave = false , onDel} : CardProps) {
         </RightColumn>
       </TempCityContainer>
       <ButtonsContainer>
-        {isSave && <Button name="Save" onClick={onSave} />}
-        <Button name="Delete" onClick={onDel} />
+        {isSave && <Button name="Save" variant="save" onClick={onSave} />}
+        <Button name="Delete" variant = "delete" onClick={onDel} />
       </ButtonsContainer>
     </CardContainer>
   );

@@ -1,33 +1,30 @@
 import styled from "@emotion/styled";
 
 interface ButtonComponentProps {
-  $isRed: boolean;
+  $variant: "save" | "search" | "delete";
 }
 
-const generateButtonColor = (isRed: boolean, disabled: boolean | undefined) => {
-  if (disabled) {
-    return "#acacacff";
-  } else {
-    if (isRed) {
-      return "#ff6868ff";
-    } else {
-      return "#1f27f5";
-    }
+const generateButtonColor = (variant: string, disabled?: boolean) => {
+  if (disabled) return "#acacacff";
+  switch (variant) {
+    case "search":
+      return "#3678B4";
+    case "delete":
+      return "transparent";
+    default:
+      return "transparent";
   }
 };
 
-const generateButtonColorOnHover = (
-  isRed: boolean,
-  disabled: boolean | undefined
-) => {
-  if (disabled) {
-    return "#acacacff";
-  } else {
-    if (isRed) {
-      return "#fc3333ff";
-    } else {
-      return "rgb(97, 102, 255)";
-    }
+const generateButtonColorOnHover = (variant: string, disabled?: boolean) => {
+  if (disabled) return "#acacacff";
+  switch (variant) {
+    case "search":
+      return "#7a99b6ff";
+    case "delete":
+      return "#b50000";
+    default:
+      return "#ffffff26";
   }
 };
 
@@ -36,31 +33,19 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   align-items: center;
   justify-content: center;
   outline: none;
-  border: none;
-  padding: 0;
   height: 48px;
-  width: 148px;
+  width: 155px;
   border-radius: 50px;
-  background-color: ${({ $isRed, disabled }) =>
-    generateButtonColor($isRed, disabled)};
+  border: ${({ $variant }) =>
+    $variant === "save" || $variant === "delete" ? "1px solid #fff" : "none"};
+  background-color: ${({ $variant, disabled }) =>
+    generateButtonColor($variant, disabled)};
   color: #ffffff;
   font-size: 20px;
-  font-weight: bold;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
   &:hover {
-    background-color: ${({ $isRed, disabled }) =>
-      generateButtonColorOnHover($isRed, disabled)};
+    background-color: ${({ $variant, disabled }) =>
+      generateButtonColorOnHover($variant, disabled)};
   }
-`;
-const ArinaStyle = styled.button`
-  height: 48px;
-  width: 155px;
-  border: 1px solid white;
-  border-radius: 50px;
-  background-color: transparent;
-  font-size: 20px;
-  font-weight: 400;
-  color: white;
-  cursor: pointer;
 `;

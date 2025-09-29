@@ -65,7 +65,7 @@ function CreateWeather() {
             error={formik.errors[WEATHER_FORM_VALUES.CITY]}
           />
         </InputsContainer>
-        <Button name="Search" type="submit" />
+        <Button name="Search" type="submit" variant="search"/>
       </CreateWeatherContainer>
       {!!currentObject.city && (
         <Card currentObject={currentObject} isSave onDel={onDelete} />

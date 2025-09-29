@@ -4,23 +4,23 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   width: 709px;
   height: 220px;
   padding: 27px 36px;
-  border-radius: 15px;
-  /* background-color: rgba(18, 45, 77, 0.5); */
+  border-radius: 25px;
   gap: 30px;
   background: linear-gradient(
     133.66deg,
-    rgba(47, 72, 111, 0.62) 5.78%,
-    rgba(11, 27, 52, 0.62) 96.58%
+    #2f486f9e 5.78%,
+    #0b1b349e 96.58%
   );
   backdrop-filter: blur(8px);
 `;
 
 export const TempCityContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 19px;
   height: 97px;
@@ -47,21 +47,22 @@ export const RightColumn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 40%;
   height: 100%;
 `;
 
 export const TempContainer = styled.div`
   font-size: 57px;
-  font-weight: 500;
+  font-weight: 500px;
   color: white;
 `;
 
 export const CityContainer = styled.div`
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 20px;
   color: white;
 `;
 
 export const IconContainer = styled.img`
-  height: 100%;
+  height: 100px;
 `;
