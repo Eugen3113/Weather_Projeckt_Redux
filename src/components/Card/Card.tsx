@@ -1,9 +1,6 @@
 import { useAppDispatch } from "store/hooks";
-import {
-  weatherActions,
- 
-} from "store/redux/weather/weatherSlice";
-import type { CardProps } from "./types"; 
+import { weatherActions } from "store/redux/weather/weatherSlice";
+import type { CardProps } from "./types";
 import Button from "components/Button/Button";
 import {
   CardContainer,
@@ -16,14 +13,15 @@ import {
   IconContainer,
 } from "./styles";
 
-function Card({currentObject, isSave = false , onDel} : CardProps) {
+function Card({ currentObject, isSave = false, onDel }: CardProps) {
   const dispatch = useAppDispatch();
 
   const onSave = () => {
     dispatch(weatherActions.addCity());
     alert("Saved successfully");
+    dispatch(weatherActions.deleteCurrentCity());  // на странице Home,карточка удаляется при сохранении
   };
- 
+
   return (
     <CardContainer>
       <TempCityContainer>
@@ -39,7 +37,7 @@ function Card({currentObject, isSave = false , onDel} : CardProps) {
       </TempCityContainer>
       <ButtonsContainer>
         {isSave && <Button name="Save" variant="save" onClick={onSave} />}
-        <Button name="Delete" variant = "delete" onClick={onDel} />
+        <Button name="Delete" variant="delete" onClick={onDel} />
       </ButtonsContainer>
     </CardContainer>
   );

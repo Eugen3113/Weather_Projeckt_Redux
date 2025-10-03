@@ -76,9 +76,16 @@ export const weatherSlice = createAppSlice({
         },
         rejected: (state: WeatherCitySliceState, action) => {
           state.isFetching = false;
-          state.currentObject = currentObjectInitialState;
-          const errPayload: any = action.payload;
-          state.error = errPayload.response.data;
+          if (action.payload) {
+            state.currentObject = currentObjectInitialState;
+            const errPayload: any = action.payload;
+            state.error = errPayload.response.data;
+          } else {
+            state.error = {
+              cod: "General error",
+              message: "Some network error",
+            };
+          }
         },
       }
     ),
