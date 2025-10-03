@@ -14,13 +14,12 @@ export const Header = styled.header`
   justify-content: space-between;
   width: 100%;
   height: 80px;
-  background-color: white;
-  padding: 10px;
+  padding: 10px 80px;
   gap: 10px;
-  background-color: #122d4d;
-  opacity: 50%;
+  background-color: #122d4d4d;
   color: white;
-  border: 2px solid black;
+  border: 1px solid #d2d2d2;
+  backdrop-filter: blur(8px);
 `;
 
 export const Logo = styled.div`
@@ -28,9 +27,7 @@ export const Logo = styled.div`
   align-items: center;
   height: 100%;
   width: fit-content;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 34px;
+  font-size: 24px;
 `;
 
 
@@ -42,8 +39,7 @@ export const NavigationContainer = styled.nav`
 `;
 
 export const HeaderLink = styled(NavLink)`
-  font-size: 24px;                                            
-  color: white;                                               
+  font-size: 20px;
   font-weight: normal;
   color: white;
   text-decoration: none;
@@ -55,6 +51,7 @@ export const Main = styled.main`
   align-items: center;
   flex: 1;
   margin-top: 100px;
+  margin-bottom: 100px;
 `;
 
 

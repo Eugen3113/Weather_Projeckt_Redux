@@ -7,7 +7,7 @@ export const InputComponent = styled.input`
   border-radius: 40px;
   padding: 12px 12px 12px 20px;
   outline: none;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #ffffff29;
   color: #fff;
   font-size: 20px;
   &::placeholder {

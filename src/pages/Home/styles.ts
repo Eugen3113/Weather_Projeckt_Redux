@@ -21,7 +21,7 @@ export const CreateWeatherContainer = styled.form`
 export const Title = styled.p`
   font-size: 24px;
   font-weight: bold;
-  color: rgba(255, 0, 0, 1);
+  color: #ff0000ff;
 `;
 
 export const InputsContainer = styled.div`
@@ -30,11 +30,11 @@ export const InputsContainer = styled.div`
   gap: 20px;
 `;
 
-export const CardContainer = styled.div`
+export const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   width: 709px;
   height: 220px;
   padding: 27px 36px;
@@ -55,44 +55,17 @@ export const TempCityContainer = styled.div`
   align-items: center;
   gap: 19px;
   height: 97px;
+=======
+  height: 50px;
+>>>>>>> bb293952789c76e37638c5e17b22b85835999c7e
   width: 100%;
-`;
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 95px;
-`;
-
-export const LeftColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  max-width: 250px;
+  max-width: 709px;
   min-width: fit-content;
+  padding: 16px;
 `;
 
-export const RightColumn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
-export const TempContainer = styled.div`
-  font-size: 57px;
-  font-weight: 500px;
+export const LoadingMessage = styled.div`
+  font-size: 20px;
+  font-weight: 400;
   color: white;
-`;
-
-export const CityContainer = styled.div`
-  font-size: 18px;
-  font-weight: 400px;
-  color: white;
-`;
-
-export const IconContainer = styled.img`
-  height: 100%;
 `;
