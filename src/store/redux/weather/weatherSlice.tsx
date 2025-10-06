@@ -5,17 +5,17 @@ import axios from "axios";
 import { v4 } from "uuid";
 
 export interface WeatherCitySliceState {
-  citysweather: CityWeather[];
-  currentObject: CityWeather;
-  error: ErrorObject;
-  isFetching: boolean;
+  citysweather: CityWeather[];         // храним массив сгородами
+  currentObject: CityWeather;          // текущий объект
+  error: ErrorObject;                  // ерор сообщение об ошибке
+  isFetching: boolean;                 // происходит загрузка при поиске
 }
-const errorObjectInitialState: ErrorObject = {
+const errorObjectInitialState: ErrorObject = {         // начальное состояние для этих объектов и обнулять состояние
   cod: "",
   message: "",
 };
 
-const currentObjectInitialState: CityWeather = {
+const currentObjectInitialState: CityWeather = {       // начальное состояние для этих объектов и обнулять состояние
   city: "",
   temp: 0,
   id: "",
@@ -28,30 +28,30 @@ const weatherInitialState: WeatherCitySliceState = {
   isFetching: false,
 };
 
-export const weatherSlice = createAppSlice({
-  name: "CITY_WEARTHER",
+export const weatherSlice = createAppSlice({                           // создание слайса
+  name: "CITY_WEARTHER",                                               // имя слайса
   initialState: weatherInitialState,
 
-  reducers: (create) => ({
+  reducers: (create) => ({                                            // создание reducers (синхронное) 
     addCity: create.reducer((state: WeatherCitySliceState) => {
-      state.citysweather.push(state.currentObject);
+      state.citysweather.push(state.currentObject);                   // добавление города через push
     }),
-    deleteCurrentCity: create.reducer((state: WeatherCitySliceState) => {
+    deleteCurrentCity: create.reducer((state: WeatherCitySliceState) => {   // удаление текущего города(уд-е карточки на Home страницы)
       state.currentObject = currentObjectInitialState;
     }),
-    deleteCity: create.reducer(
+    deleteCity: create.reducer(                                       // удаление города из списка(массива)
       (state: WeatherCitySliceState, action: PayloadAction<string>) => {
-        state.citysweather = state.citysweather.filter(
+        state.citysweather = state.citysweather.filter(                // через filter
           (citysweather) => citysweather.id !== action.payload
         );
       }
     ),
-    deleteErrorCard: create.reducer((state) => {
+    deleteErrorCard: create.reducer((state) => {                   // удаление карточки с ошибкой в Home
       state.error = errorObjectInitialState;
     }),
-    searchCity: create.asyncThunk(
+    searchCity: create.asyncThunk(                             // асинхронная фу-я: поиск города
       async (city: string, { rejectWithValue }) => {
-        try {
+        try {                                             // через try-catch обрабатываем ошибку
           const response = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=209195650874d2713f1cfa54cc73bdd1`
           );
@@ -61,7 +61,7 @@ export const weatherSlice = createAppSlice({
         }
       },
       {
-        pending: (state: WeatherCitySliceState) => {
+        pending: (state: WeatherCitySliceState) => {          // три состояния: pending,fulfilld,rejected
           state.error = errorObjectInitialState;
           state.isFetching = true;
         },
@@ -105,3 +105,19 @@ export const weatherSlice = createAppSlice({
 
 export const weatherActions = weatherSlice.actions;
 export const weatherSelectors = weatherSlice.selectors;
+
+
+// Три состояния — pending, fulfilled, и rejected — часто используются в программировании, особенно при работе с асинхронными операциями,
+//  такими как Promises в JavaScript. Вот краткое объяснение каждого:
+// 🔄 1.  — ожидание
+// • 	Операция началась, но ещё не завершилась.
+// • 	Promise находится в процессе выполнения.
+// • 	Ни результат, ни ошибка ещё не известны.
+// ✅ 2.  — выполнено
+// • 	Операция завершилась успешно.
+// • 	Promise вернул результат.
+// • 	Можно получить доступ к значению через .
+// ❌ 3.  — отклонено
+// • 	Операция завершилась с ошибкой.
+// • 	Promise вернул причину отказа.
+// • 	Обрабатывается через .

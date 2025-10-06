@@ -9,3 +9,5 @@ export interface ErrorObject {
   cod: string;
   message: string;
 }
+
+// типы для стейта
